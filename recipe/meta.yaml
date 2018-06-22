@@ -24,13 +24,18 @@ requirements:
   build:
     - r-base
     - r-rcpp
+    - r-promises
+    - r-later
+    - r-bh 
     - posix                # [win]
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
-
   run:
     - r-base
     - r-rcpp
+    - r-promises
+    - r-later
+    - r-bh 
 
 test:
   commands:
