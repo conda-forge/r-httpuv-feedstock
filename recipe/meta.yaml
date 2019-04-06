@@ -1,4 +1,4 @@
-{% set version = "1.4.5.1" %}
+{% set version = "1.5.1" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,11 +12,11 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/httpuv_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/httpuv/httpuv_{{ version }}.tar.gz
-  sha256: 76739878c8583527a3aa6124389ba103acc91b030635290397f3b6c924200d57
+  sha256: b5bb6b3b2f1a6d792568a70f3f357d6b3a35a5e26dd0c668c61a31f2ae8f5710
 
 build:
   merge_build_host: True  # [win]
-  number: 1000
+  number: 0
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
