@@ -1,4 +1,4 @@
-{% set version = "1.5.2" %}
+{% set version = "1.5.3.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/httpuv_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/httpuv/httpuv_{{ version }}.tar.gz
-  sha256: 93b32be974e0f531a3cb343685165c0caadf30cfea07683f8d69302a34045d8d
+  sha256: 5f517d4358957782bbcdd93fe551b5c2962e4f43fee486c69a7fb71af6950252
 
 build:
-  merge_build_host: True  # [win]
-  number: 2
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -60,14 +60,10 @@ test:
 about:
   home: https://github.com/rstudio/httpuv
   license: GPL (>= 2)
-  summary: Provides low-level socket and protocol support for handling HTTP and WebSocket requests
-    directly from within R. It is primarily intended as a building block for other packages,
-    rather than making it particularly easy to create complete web applications using
-    httpuv alone. httpuv is built on top of the libuv and http-parser C libraries, both
-    of which were developed by Joyent, Inc. (See LICENSE file for libuv and http-parser
-    license information.)
+  summary: Provides low-level socket and protocol support for handling HTTP and WebSocket requests directly from within R. It is primarily intended as a building block for other packages, rather than making it particularly easy to create complete web applications using httpuv alone. httpuv is built on top of the libuv and
+    http-parser C libraries, both of which were developed by Joyent, Inc. (See LICENSE file for libuv and http-parser license information.)
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 
 extra:
   recipe-maintainers:
