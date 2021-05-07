@@ -3,7 +3,7 @@ About r-httpuv
 
 Home: https://github.com/rstudio/httpuv
 
-Package license: GPL (>= 2)
+Package license: GPL-2.0-or-later
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-httpuv-feedstock/blob/master/LICENSE.txt)
 

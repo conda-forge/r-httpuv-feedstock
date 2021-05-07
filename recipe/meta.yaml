@@ -1,4 +1,4 @@
-{% set version = "1.6.0" %}
+{% set version = "1.6.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/httpuv_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/httpuv/httpuv_{{ version }}.tar.gz
-  sha256: 75eee06bd3155c17424a5d9abca3056bfb790052897ae9be8d5e3b3244ea2006
+  sha256: 6a735dd55323f3c36802da3fe22f985b4c02149c71df617555657944ff29be67
 
 build:
   merge_build_host: true  # [win]
@@ -21,10 +21,10 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{ compiler('cxx') }}      # [not win]
+    - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('m2w64_cxx') }}        # [win]
+    - {{ compiler('cxx') }}            # [not win]
+    - {{ compiler('m2w64_cxx') }}      # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}grep              # [win]
@@ -35,9 +35,9 @@ requirements:
     - {{ posix }}make
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
-    - r-bh
     - r-r6
     - r-rcpp >=0.11.0
     - r-later >=0.8.0
@@ -45,8 +45,6 @@ requirements:
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
-    # BH is the header-only part of Boost and thus a compile-time requirement only
-    # - r-bh
     - r-r6
     - r-rcpp >=0.11.0
     - r-later >=0.8.0
@@ -59,11 +57,12 @@ test:
 
 about:
   home: https://github.com/rstudio/httpuv
-  license: GPL (>= 2)
+  license: GPL-2.0-or-later
   summary: Provides low-level socket and protocol support for handling HTTP and WebSocket requests directly from within R. It is primarily intended as a building block for other packages, rather than making it particularly easy to create complete web applications using httpuv alone. httpuv is built on top of the libuv and
     http-parser C libraries, both of which were developed by Joyent, Inc. (See LICENSE file for libuv and http-parser license information.)
   license_family: GPL3
-  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 
 extra:
   recipe-maintainers:
