@@ -45,14 +45,14 @@ requirements:
   host:
     - r-base
     - r-r6
-    - r-rcpp >=0.11.0
+    - r-rcpp >=1.0.7
     - r-later >=0.8.0
     - r-promises
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
     - r-r6
-    - r-rcpp >=0.11.0
+    - r-rcpp >=1.0.7
     - r-later >=0.8.0
     - r-promises
 
@@ -69,6 +69,7 @@ about:
   license_family: GPL3
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
+    - LICENSE
 
 extra:
   recipe-maintainers:
