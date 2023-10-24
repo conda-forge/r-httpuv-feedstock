@@ -3,6 +3,7 @@ About r-httpuv-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-httpuv-feedstock/blob/main/LICENSE.txt)
 
+
 About r-httpuv
 --------------
 
@@ -11,6 +12,7 @@ Home: https://github.com/rstudio/httpuv
 Package license: GPL-2.0-or-later
 
 Summary: Provides low-level socket and protocol support for handling HTTP and WebSocket requests directly from within R. It is primarily intended as a building block for other packages, rather than making it particularly easy to create complete web applications using httpuv alone. httpuv is built on top of the libuv and http-parser C libraries, both of which were developed by Joyent, Inc. (See LICENSE file for libuv and http-parser license information.)
+
 About r-httpuv
 --------------
 
