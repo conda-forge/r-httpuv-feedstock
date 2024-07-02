@@ -48,6 +48,7 @@ requirements:
     - r-rcpp >=1.0.7
     - r-later >=0.8.0
     - r-promises
+    - libuv
   run:
     - r-base
     - r-r6
