@@ -1,6 +1,5 @@
 {% set version = "1.6.15" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-httpuv
@@ -13,8 +12,7 @@ source:
   sha256: 5e6ded3623a39df3e1db6cb7e7292b4c03c80b3c6c5faaac3b78b711cb205ed0
 
 build:
-  merge_build_host: true  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -28,7 +26,9 @@ requirements:
     - r-promises                 # [build_platform != target_platform]
     - gnuconfig  # [unix]
     - {{ compiler('c') }}              # [not win]
+    - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ compiler('cxx') }}            # [not win]
     - {{ compiler('m2w64_cxx') }}      # [win]
     - {{ posix }}filesystem        # [win]
@@ -37,7 +37,7 @@ requirements:
     - {{ posix }}autoconf
     - {{ posix }}automake          # [not win]
     - {{ posix }}automake-wrapper  # [win]
-    - {{ posix }}pkg-config
+    - pkg-config
     - {{ posix }}make
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
@@ -48,9 +48,9 @@ requirements:
     - r-rcpp >=1.0.7
     - r-later >=0.8.0
     - r-promises
+    - libuv
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-r6
     - r-rcpp >=1.0.7
     - r-later >=0.8.0
