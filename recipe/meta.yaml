@@ -52,6 +52,7 @@ requirements:
     - r-later >=0.8.0
     - r-promises
     - libuv
+    - zlib
   run:
     - r-base
     - r-r6
